@@ -30,8 +30,13 @@ def generate():
     
     try:
         # Run command and capture output
-        result = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-        return result.decode('utf-8')
+        result = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode('utf-8')
+        
+        # Filter out banner lines (starting with =)
+        lines = result.splitlines()
+        filtered_lines = [line for line in lines if not line.strip().startswith('=')]
+        
+        return '\n'.join(filtered_lines).strip()
     except subprocess.CalledProcessError as e:
         return f"Error executing jar: {e.output.decode('utf-8')}", 500
 
