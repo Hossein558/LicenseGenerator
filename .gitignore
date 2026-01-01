@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+github_deploy_key
+github_deploy_key.pub
+antigravity_github
+antigravity_github.pub
+*.key
+*.pub
