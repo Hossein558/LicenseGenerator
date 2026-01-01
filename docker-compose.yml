@@ -7,3 +7,5 @@ services:
     ports:
       - "5000:5000"
     restart: always
+    environment:
+      - CRM_ORG_NAME=tesnaco.com

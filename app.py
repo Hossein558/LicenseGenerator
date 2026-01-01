@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template
 import subprocess
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    crm_org_name = os.environ.get('CRM_ORG_NAME', 'tesnaco.com')
+    return render_template('index.html', crm_org_name=crm_org_name)
 
 @app.route('/generate')
 def generate():
